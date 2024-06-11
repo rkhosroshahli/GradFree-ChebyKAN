@@ -126,7 +126,7 @@ class GFOProblem(Problem):
         fitness = 0
 
         for idx, (data, target) in enumerate(data_loader):
-            data, target = data.view(-1, 28 * 28).to(device), target.to(device)
+            data, target = data.to(device), target.to(device)
             output = model(data)
             fitness += torch.nn.functional.cross_entropy(output, target).item()
 
